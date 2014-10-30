@@ -42,6 +42,7 @@ endif
 
 "catch errors caused by wrong parenthesis and brackets
 " also accept <% for {, %> for }, <: for [ and :> for ] (C99)
+" TODO: add the debug print `<<< ... >>>'
 syn cluster     cParenGroup contains=cParenError,cIncluded,cSpecial,cCommentSkip,cCommentString,cComment2String,@cCommentGroup,cCommentStartError,cUserCont,cUserLabel,cBitField,cCommentSkip,cOctalZero,cCppOut,cCppOut2,cCppSkip,cFormat,cNumber,cFloat,cOctal,cOctalError,cNumbersCom
 if exists("c_no_bracket_error")
   syn region    cParen          transparent start='(' end=')' contains=ALLBUT,@cParenGroup,cCppParen,cCppString
@@ -102,6 +103,7 @@ syn match   ckNumber      "\<\d\+\.\d\+\([eE][+-]\=\d\+\)\=[jJ]\=\>"
 
 
 " CHUCK extentions
+" TODO: adjust to chuck-v1.3.4.0
 syn keyword ckStatement	        new goto break return continue spork 
 syn keyword ckConditional       if else switch
 syn keyword ckLoop		while for do until
