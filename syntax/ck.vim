@@ -123,6 +123,7 @@ syn keyword ckTransform   FFT IFFT DCT IDCT
 syn keyword ckFeatureExt  Centroid Flux RMS RollOff
 syn keyword ckMidi        MidiIn MidiOut MidiMsg
 syn keyword ckOsc         OscRecv OscSend OscEvent
+syn keyword ckNull        null
 
 " Default highlighting
 if version >= 508 || !exists("did_cpp_syntax_inits")
@@ -166,6 +167,8 @@ if version >= 508 || !exists("did_cpp_syntax_inits")
   HiLink ckFeatureExt           ckUana
   HiLink ckMidi                 ckType
   HiLink ckOsc                  ckType
+  HiLink ckNull                 ckConst
+
   HiLink ckUgen                 ckType
   HiLink ckUana                 ckType
   HiLink ckType                 Type
