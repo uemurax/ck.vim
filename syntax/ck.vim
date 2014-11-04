@@ -103,30 +103,26 @@ syn match   ckNumber      "\<\d\+\.\d\+\([eE][+-]\=\d\+\)\=[jJ]\=\>"
 
 
 " CHUCK extentions
-" TODO: adjust to chuck-v1.3.4.0
-syn keyword ckStatement	        new goto break return continue spork 
-syn keyword ckConditional       if else switch
-syn keyword ckLoop		while for do until
-syn keyword ckNow               now 
-syn keyword ckType              dur time Shred UGen Event Object 
-syn keyword cType               int float string void
-syn keyword ckAccess		public protected private
-syn keyword ckOperator		and bitor or xor compl bitand and_eq or_eq xor_eq not not_eq
-syn match ckCast               "\s*\$\s*\(int\|float\)\s"
-syn keyword ckStructure	        class fun 
-syn keyword ckUgen		gain noise impulse step phasor sinosc pulseosc triosc sqrosc sawosc halfrec fullrect zerox delayp sndbuf pan2      
-syn keyword ckSDK               bandedWG blowbotl BlowHole Bowed Brass Clarinet Flute Mandolin ModalBar Moog Saxofony Shakers Sitar StifKarp VoicForm FM BeeThree FMVoices HevyMetl PercFlut Rhodey TubeBell Wurley Delay DelayA DelayL Echo Envelope ADSR biquad Filter OnePole TwoPole OneZero TwoZero PoleZero JCRev NRev PRCRev Chorus Modulate PitShift SubNoise WvIn WvOut WaveLoop
-syn keyword ckBoolean		true false
-syn keyword ckShreds            me machine
-syn keyword ckInheritance       subClass extends 
-syn keyword ckIO                dac adc blackhole 
-syn keyword ckNetwork           netin netout
-syn keyword ckCommunication     MidiIn MidiOut MidiMsg OSC_Recv OSC_Addr OSC_Send
-syn keyword ckConstants 	pi
-syn match   ckOperator          "\s*=\(>\|<\)\s*"          
-
-" The minimum and maximum operators in GNU C++
-syn match cppMinMax "[<>]?"
+syn keyword ckKeyword     for while until repeat continue break if else do return function fun new class interface extends implements public protected private static pure const spork typeof
+syn match cOperator       "++\|--\|::"
+syn match cOperator       "\s\(+\|-\|\*\|/\|%\|==\|!=\|<\|>\|<=\|>=\|&&\|||\|&\||\|\^\|>>\|<<\|!\|\~\|@\|@@\)\s"
+syn match ckOperator      "\s\(\S*=>\)\s"
+syn match ckOperator      "\s\(=\^\|=<\)\s"
+syn keyword ckPrimitive   int float time dur void complex polar
+syn keyword ckDuration    smp ms second minute hour day week
+syn keyword ckTime        now
+syn keyword ckShred       me Machine
+syn keyword ckBuiltin     Object Shred Event UGen
+syn keyword ckSpecialUgen dac adc blackhole
+syn keyword ckStdUgen     SinOsc PulseOsc SqrOsc TriOsc SawOsc Phasor Noise Impulse Step Gain SndBuf HalfRect FullRect ZeroX Min2 Pan2 GenX CurveTable WarpTable LiSa
+syn keyword ckFilter      OneZero TwoZero OnePole TwoPole PoleZero BiQuad Filter LPF HPF BPF BRF ResonZ Dyno
+syn keyword ckStkUgen     Envelope ADSR Delay DelayA DelayL Echo JCRev NRev PRCRev Chorus Modulate PitShift SubNoise Blit BlitSaw BlitSquare WvIn WaveLoop WvOut
+syn keyword StkInst       StkInstrument BandedWG BlowBotl BlowHole Bowed Brass Clarinet Flute Mandolin ModalBar Moog Saxofony Shakers Sitar StifKarp VoicForm FM BeeThree FMVoices HevyMetl PercFlut Rhodey TubeBell Wurley
+syn keyword ckBasicUana   UAna UAnaBlob Windowing
+syn keyword ckTransform   FFT IFFT DCT IDCT
+syn keyword ckFeatureExt  Centroid Flux RMS RollOff
+syn keyword ckMidi        MidiIn MidiOut MidiMsg
+syn keyword ckOsc         OscRecv OscSend OscEvent
 
 " Default highlighting
 if version >= 508 || !exists("did_cpp_syntax_inits")
@@ -137,29 +133,12 @@ if version >= 508 || !exists("did_cpp_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink ckCommunication        Special
-  HiLink ckNetwork              Special
   HiLink cCommentL		cComment
   HiLink cCommentStart		cComment
   HiLink cComment 		Comment
   HiLink cCppString             cString
   HiLink cString		String
-  HiLink ckConditional          Conditional
-  HiLink ckLoop			Repeat
-  HiLink ckAccess		ckStatement
-  HiLink ckUgen                 ckType
-  HiLink ckSDK                  ckType
-  HiLink ckStatement		Statement
-  HiLink ckCast 		ckStatement
-  HiLink ckNow			Special
-  HiLink ckType		        Type
   HiLink cType		        Type
-  HiLink ckStructure		Structure
-  HiLink ckOperator		Operator	
-  HiLink ckShreds		ckStatement
-  HiLink ckInheritance		ckStatement
-  HiLink ckBoolean		Boolean
-  HiLink ckIO			Include
   HiLink cParenError		cError
   HiLink cErrInBracket		cError
   HiLink cErrInParen		cError
@@ -169,7 +148,28 @@ if version >= 508 || !exists("did_cpp_syntax_inits")
   HiLink cCppBracket	  	cError
   HiLink cError			Error
   HiLink ckNumber		Number
-  HiLink ckConstants		Constant
+  HiLink ckKeyword              Statement
+  HiLink ckOperator             Operator
+  HiLink cOperator              Operator
+  HiLink ckPrimitive            ckType
+  HiLink ckDuration             ckConst
+  HiLink ckTime                 ckConst
+  HiLink ckShred                ckConst
+  HiLink ckBuiltin              ckType
+  HiLink ckSpecialUgen          ckConst
+  HiLink ckStdUgen              ckUgen
+  HiLink ckFilter               ckUgen
+  HiLink ckStkUgen              ckUgen
+  HiLink ckStkInst              ckUgen
+  HiLink ckBasicUana            ckUana
+  HiLink ckTransform            ckUana
+  HiLink ckFeatureExt           ckUana
+  HiLink ckMidi                 ckType
+  HiLink ckOsc                  ckType
+  HiLink ckUgen                 ckType
+  HiLink ckUana                 ckType
+  HiLink ckType                 Type
+  HiLink ckConst                Constant
   
   delcommand HiLink
 endif
