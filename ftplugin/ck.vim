@@ -25,6 +25,7 @@ function! CkTime()
 endfunction
 
 function! CkAdd()
+  w
   let f = expand("%:p")
   let tc = CkCommand(join(["+", f], ' '))
   return tc
@@ -36,6 +37,7 @@ function! CkRemove(n, ...)
 endfunction
 
 function! CkReplace(n)
+  w
   let f = expand("%:p")
   let tc = CkCommand(join(["=", a:n, f], ' '))
   return tc
