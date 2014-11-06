@@ -109,7 +109,7 @@ syn match cOperator       "\s\(+\|-\|\*\|/\|%\|==\|!=\|<\|>\|<=\|>=\|&&\|||\|&\|
 syn match ckOperator      "\s\(\S*=>\)\s"
 syn match ckOperator      "\s\(=\^\|=<\)\s"
 syn keyword ckPrimitive   int float time dur void complex polar
-syn keyword ckDuration    smp ms second minute hour day week
+syn keyword ckDuration    samp ms second minute hour day week
 syn keyword ckTime        now
 syn keyword ckShred       me Machine
 syn keyword ckBuiltin     Object Shred Event UGen
