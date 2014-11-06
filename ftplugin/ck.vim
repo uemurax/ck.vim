@@ -2,8 +2,11 @@ if !exists("g:ck_host")
   let g:ck_host = 'localhost'
 endif
 
-function! CkSetHost(s)
-  let g:ck_host = a:s
+function! CkHost(...)
+  if(a:0 > 0)
+    let g:ck_host = a:1
+  endif
+  echo "host: " . g:ck_host
 endfunction
 
 function! CkCommand(s)
@@ -50,6 +53,7 @@ function! CkKill()
 endfunction
 
 
+command! -nargs=? Host :call CkHost(<f-args>)
 command! -nargs=+ Remove :call CkRemove(<f-args>)
 command! -nargs=1 Replace :call CkReplace(<f-args>)
 
@@ -57,4 +61,5 @@ map <LocalLeader>^ :call CkStatus()
 map <LocalLeader>+ :call CkAdd()
 map <LocalLeader>t :call CkTime()
 map <LocalLeader>k :call CkKill()
+map <LocalLeader>h :call CkHost()
 
