@@ -112,7 +112,7 @@ syn keyword ckPrimitive   int float time dur void complex polar
 syn keyword ckDuration    samp ms second minute hour day week
 syn keyword ckTime        now
 syn keyword ckShred       me Machine
-syn keyword ckBuiltin     Object Shred Event UGen
+syn keyword ckBuiltin     Object Shred Event UGen Chugen Chubgraph
 syn keyword ckSpecialUgen dac adc blackhole
 syn keyword ckStdUgen     SinOsc PulseOsc SqrOsc TriOsc SawOsc Phasor Noise Impulse Step Gain SndBuf HalfRect FullRect ZeroX Min2 Pan2 GenX CurveTable WarpTable LiSa
 syn keyword ckFilter      OneZero TwoZero OnePole TwoPole PoleZero BiQuad Filter LPF HPF BPF BRF ResonZ Dyno
